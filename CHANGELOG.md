@@ -2,6 +2,13 @@
 
 <!-- towncrier release notes start -->
 
+## 0.2.1 (2026-06-22)
+
+### Bug Fixes
+
+- Renamed the internal `"wimwian"` key in `convert_split()` output to `"index"`. Callers reading the returned dict by key name must update to `css_files["index"]`. (#2)
+
+
 ## 0.2.0 (2026-06-22)
 
 ### Features
