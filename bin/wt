@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# bin/wt — create or remove a session worktree alongside the repo
+#
+# usage:
+#   bin/wt feature <slug>        new feature/<slug> from dev, in its own worktree
+#   bin/wt start <branch>        create worktree for an existing branch
+#   bin/wt list                  show all worktrees for this repo
+#   bin/wt rm <slug>             remove a worktree (branch is kept)
+set -euo pipefail
+
+repo_root=$(git rev-parse --show-toplevel)
+repo_name=$(basename "$repo_root")
+wt_root="$(dirname "$repo_root")/${repo_name}.worktrees"
+mkdir -p "$wt_root"
+
+case "${1:-}" in
+  feature)
+    slug="$2"; branch="feature/$slug"
+    git -C "$repo_root" fetch origin dev 2>/dev/null || true
+    git -C "$repo_root" worktree add -b "$branch" "$wt_root/$slug" dev
+    echo "→ $wt_root/$slug ($branch, from dev)"
+    echo "  cd $wt_root/$slug && uv sync"
+    ;;
+  start)
+    branch="$2"; slug="${branch##*/}"
+    git -C "$repo_root" worktree add "$wt_root/$slug" "$branch"
+    echo "→ $wt_root/$slug ($branch)"
+    echo "  cd $wt_root/$slug && uv sync"
+    ;;
+  list)
+    git -C "$repo_root" worktree list
+    ;;
+  rm)
+    slug="$2"
+    git -C "$repo_root" worktree remove "$wt_root/$slug"
+    echo "→ removed $wt_root/$slug"
+    ;;
+  *)
+    echo "usage: $0 {feature <slug>|start <branch>|list|rm <slug>}" >&2
+    exit 1
+    ;;
+esac

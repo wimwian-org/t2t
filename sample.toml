@@ -1,0 +1,64 @@
+[meta]
+name    = "sample"
+version = "0.1.0"
+
+[[palette]]
+name  = "primary"
+base  = "oklch(55% 0.20 260)"
+
+[[palette]]
+name  = "mono"
+base  = "oklch(50% 0.00 0)"
+
+[[font]]
+name  = "sans"
+stack = ["Inter", "ui-sans-serif", "system-ui"]
+
+  [[font.face]]
+  family  = "Inter"
+  url     = "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS.woff2"
+  weight  = "100 900"
+  style   = "normal"
+  display = "swap"
+
+[typography.sizes]
+sm      = { size = "0.875rem" }
+base    = { size = "1rem" }
+lg      = { size = "1.5rem" }
+display = { size = "3rem", leading = 1.0, weight = 700 }
+
+[typography.weights]
+normal = 400
+medium = 500
+semibold = 600
+bold   = 700
+
+[[token]]
+name     = "--color-surface"
+palette  = "primary"
+light    = 900
+dark     = 100
+muted    = 0.6
+disabled = 0.35
+
+[[token]]
+name    = "--color-accent"
+palette = "primary"
+light   = 200
+dark    = 800
+
+[[token]]
+name  = "--color-special"
+light = "oklch(80% 0.10 120)"
+dark  = "oklch(30% 0.06 120)"
+
+[root]
+"--radius-card" = "0.75rem"
+
+[[contrast]]
+label = "surface / accent"
+bg    = "--color-surface"
+fg    = "--color-accent"
+
+[static]
+"*, *::before, *::after" = "box-sizing: border-box;"
