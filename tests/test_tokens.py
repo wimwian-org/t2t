@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """Tests for tokens.py — resolve_token_color, build_token_maps."""
 
 import pytest

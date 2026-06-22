@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """Tests for color.py — parse_oklch, fmt_oklch, is_oklch, color_ramp."""
 
 import pytest

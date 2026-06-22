@@ -1,3 +1,6 @@
+<!-- Copyright (c) 2026 @wimwian -->
+<!-- SPDX-License-Identifier: MIT -->
+<!-- https://github.com/wimwian-org/t2t -->
 # Behavioral Guidelines
 
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
