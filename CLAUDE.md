@@ -56,7 +56,7 @@ TOML file
        │     └─ gamut.check_gamut()       hard-exits if >20% outside sRGB
        ├─ contrast.validate_contrast()    hard-exits if any pair fails WCAG AA
        └─ render.*()                      → CSS strings
-            └─ main.convert_split()      bundles into {theme, typography, utilities, wimwian}
+            └─ main.convert_split()      bundles into {theme, typography, utilities, index}
 ```
 
 `main.py` orchestrates everything. `convert()` (single-file output) and `convert_split()` (four-file output) are the two entry points; the CLI uses `convert_split`.
@@ -100,7 +100,7 @@ The `[data-theme='dark']` block only flips `--L`/`--D`; individual token values 
 
 | File | Contents |
 |------|----------|
-| `wimwian.css` | `@import "tailwindcss"` + imports for the three below |
+| `index.css` | `@import "tailwindcss"` + imports for the three below |
 | `theme.css` | `@font-face` blocks, `:root` custom properties, dark-mode flip |
 | `typography.css` | `@utility` blocks from `[text]` categories |
 | `utilities.css` | `@utility tint-*`, `@utility font-*`, `[utilities]`, `[components]` |
