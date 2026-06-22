@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """
 oklch color parsing, formatting, and the core color_ramp function.
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """Tests for render.py — render_text_utilities, render_tint_utilities, helpers."""
 
 from t2t.render import (

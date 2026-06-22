@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """
 t2t — TOML to Tailwind CSS theme converter.
 

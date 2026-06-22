@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """Tests for palette.py — build_palette_map."""
 
 from t2t.palette import build_palette_map

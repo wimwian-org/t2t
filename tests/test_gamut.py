@@ -1,3 +1,6 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 """Tests for gamut.py — oklch_to_linear_srgb, check_gamut."""
 
 import pytest

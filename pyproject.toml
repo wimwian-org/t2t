@@ -1,6 +1,9 @@
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 [project]
 name = "t2t"
-version = "0.1.0"
+version = "0.2.0"
 description = "TOML to Tailwind CSS theme converter"
 requires-python = ">=3.15"
 dependencies = [

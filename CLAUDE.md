@@ -1,3 +1,6 @@
+<!-- Copyright (c) 2026 @wimwian -->
+<!-- SPDX-License-Identifier: MIT -->
+<!-- https://github.com/wimwian-org/t2t -->
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -8,6 +11,7 @@ Child docs:
 - [.claude/process.md](.claude/process.md) — Plan-before-execute discipline
 - [.claude/testing.md](.claude/testing.md) — pytest conventions and coverage
 - [.claude/gitflow.md](.claude/gitflow.md) — Branching model + worktree workflow for parallel/multi-agent sessions
+- [.claude/tooling.md](.claude/tooling.md) — Minimum tool versions (runtime, build, test, release, deps)
 
 ---
 

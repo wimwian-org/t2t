@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 @wimwian
+# SPDX-License-Identifier: MIT
+# https://github.com/wimwian-org/t2t
 # bin/wt — create or remove a session worktree alongside the repo
 #
 # usage:
