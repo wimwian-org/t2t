@@ -1,6 +1,6 @@
-# Copyright (c) 2026 @wimwian
+# Copyright (c) 2026 @index
 # SPDX-License-Identifier: MIT
-# https://github.com/wimwian-org/t2t
+# https://github.com/index-org/t2t
 """Tests for convert_split and _build_minified in t2t.main."""
 
 import tomllib
@@ -57,37 +57,37 @@ value = "var(--surface-primary-bg)"
 class TestConvertSplit:
     def test_returns_four_keys(self):
         result = convert_split(_MINIMAL)
-        assert set(result) == {"theme", "typography", "utilities", "wimwian"}
+        assert set(result) == {"theme", "typography", "utilities", "index"}
 
-    def test_wimwian_imports_tailwindcss(self):
+    def test_index_imports_tailwindcss(self):
         result = convert_split(_MINIMAL)
-        assert '@import "tailwindcss";' in result["wimwian"]
+        assert '@import "tailwindcss";' in result["index"]
 
-    def test_wimwian_always_imports_theme(self):
+    def test_index_always_imports_theme(self):
         result = convert_split(_MINIMAL)
-        assert '@import "./theme.css";' in result["wimwian"]
+        assert '@import "./theme.css";' in result["index"]
 
-    def test_wimwian_header_uses_meta_name(self):
+    def test_index_header_uses_meta_name(self):
         data = tomllib.loads('[meta]\nname = "my-theme"\n' + """
 [[palette]]
 name = "mono"
 base = "oklch(50% 0 0)"
 """)
         result = convert_split(data)
-        assert "my-theme" in result["wimwian"]
+        assert "my-theme" in result["index"]
 
-    def test_wimwian_header_includes_version(self):
+    def test_index_header_includes_version(self):
         data = tomllib.loads('[meta]\nname = "t"\nversion = "1.2.3"\n' + """
 [[palette]]
 name = "mono"
 base = "oklch(50% 0 0)"
 """)
         result = convert_split(data)
-        assert "v1.2.3" in result["wimwian"]
+        assert "v1.2.3" in result["index"]
 
-    def test_wimwian_omits_version_when_absent(self):
+    def test_index_omits_version_when_absent(self):
         result = convert_split(_MINIMAL)
-        assert " v" not in result["wimwian"]
+        assert " v" not in result["index"]
 
     def test_theme_contains_root(self):
         result = convert_split(_MINIMAL)
@@ -101,29 +101,29 @@ base = "oklch(50% 0 0)"
         result = convert_split(_WITH_TEXT)
         assert "@utility body-md" in result["typography"]
 
-    def test_wimwian_imports_typography_when_present(self):
+    def test_index_imports_typography_when_present(self):
         result = convert_split(_WITH_TEXT)
-        assert '@import "./typography.css";' in result["wimwian"]
+        assert '@import "./typography.css";' in result["index"]
 
-    def test_wimwian_omits_typography_import_when_empty(self):
+    def test_index_omits_typography_import_when_empty(self):
         result = convert_split(_MINIMAL)
-        assert "./typography.css" not in result["wimwian"]
+        assert "./typography.css" not in result["index"]
 
-    def test_wimwian_omits_utilities_import_when_empty(self):
+    def test_index_omits_utilities_import_when_empty(self):
         result = convert_split(_MINIMAL)
-        assert "./utilities.css" not in result["wimwian"]
+        assert "./utilities.css" not in result["index"]
 
     def test_utilities_contains_tint_when_surface_tokens_present(self):
         result = convert_split(_WITH_TINTS)
         assert "@utility tint-primary" in result["utilities"]
 
-    def test_wimwian_imports_utilities_when_present(self):
+    def test_index_imports_utilities_when_present(self):
         result = convert_split(_WITH_TINTS)
-        assert '@import "./utilities.css";' in result["wimwian"]
+        assert '@import "./utilities.css";' in result["index"]
 
 
-def _files(theme="", typography="", utilities="", wimwian="") -> dict[str, str]:
-    return {"theme": theme, "typography": typography, "utilities": utilities, "wimwian": wimwian}
+def _files(theme="", typography="", utilities="", index="") -> dict[str, str]:
+    return {"theme": theme, "typography": typography, "utilities": utilities, "index": index}
 
 
 class TestBuildMinified:
@@ -151,10 +151,10 @@ class TestBuildMinified:
         result = _build_minified(_files(utilities="@layer utilities { .font-sans { font-family: sans-serif; } }"))
         assert ".font-sans" in result
 
-    def test_wimwian_manifest_excluded(self):
+    def test_index_manifest_excluded(self):
         result = _build_minified(_files(
             theme=":root { --x: 1; }",
-            wimwian='@import "tailwindcss";\n@import "./theme.css";',
+            index='@import "tailwindcss";\n@import "./theme.css";',
         ))
         assert "./theme.css" not in result
 
